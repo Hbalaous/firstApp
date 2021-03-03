@@ -31,7 +31,17 @@ export class IntroComponent implements OnInit {
       name: '',
       active: false
     }
+
     this.editable = true
+
+    setTimeout(() => {
+      this.editable = false
+    }, 2000)
+
+  }
+
+  changeStatus(myName) {
+    myName.active = !myName.active
   }
 
 }

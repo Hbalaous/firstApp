@@ -4,13 +4,34 @@
     <p class="lead">Jumbo helper text</p>
     <input type="text" class="form-control" [(ngModel)]="username.name">
      <button (click)="addName()" class="btn btn-success btn-block">Add new name</button>
-     <span class="badge badge-info" *ngIf="editable">User Added SuccessFully</span>
+     
+     <div *ngIf="editable; then added else noAdded"></div>
+     
+     <ng-template #added>
+        <span class="badge badge-info">User Added SuccessFully</span>
+     </ng-template>
+
+     <ng-template #noAdded>
+         <span  class="badge badge-info"> new User</span>
+     </ng-template>
+
     <hr class="my-2">
 
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let myName of names">
             
-            {{ myName.active }} - {{ myName.name }} 
+            <i 
+                (click)="changeStatus(myName)"
+                [ngClass]="{
+                    'fa-check-circle': myName.active,
+                    'fa-check-circle-o': !myName.active
+                }" 
+                class="fa text-primary">
+            </i> 
+
+            <!--<span [class.text-primary]="myName.active">{{ myName.active }}</span>-->
+            
+            {{ myName.name }} 
 
             <div class="text-right">
                 <button class="btn btn-dark btn-sm ml-1">Delete</button>
