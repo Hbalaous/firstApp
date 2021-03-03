@@ -1,0 +1,27 @@
+
+<div class="jumbotron">
+    <h1 class="display-3">Jumbo heading</h1>
+    <p class="lead">Jumbo helper text</p>
+    <input type="text" class="form-control" [(ngModel)]="username.name">
+     <button (click)="addName()" class="btn btn-success btn-block">Add new name</button>
+     <span class="badge badge-info" *ngIf="editable">User Added SuccessFully</span>
+    <hr class="my-2">
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let myName of names">
+            
+            {{ myName.active }} - {{ myName.name }} 
+
+            <div class="text-right">
+                <button class="btn btn-dark btn-sm ml-1">Delete</button>
+                <button class="btn btn-warning btn-sm ml-1">Edit</button>
+            </div>
+
+        </li>
+    </ul>
+
+    <p>More info</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+    </p>
+</div>
