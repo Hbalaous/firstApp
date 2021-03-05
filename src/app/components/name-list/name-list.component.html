@@ -1,0 +1,26 @@
+
+<ng-content>
+
+</ng-content>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let myName of listeNames">
+        
+        <!-- (click)="changeStatus(myName)"-->
+        <i 
+           
+            [ngClass]="{
+                'fa-check-circle': myName.active,
+                'fa-check-circle-o': !myName.active
+            }" 
+            class="fa text-primary">
+        </i> 
+
+        {{ myName.name }} 
+
+        <div class="text-right">
+            <button class="btn btn-dark btn-sm ml-1" (click)="destroyName(myName)">Delete</button>
+        </div>
+
+    </li>
+</ul>

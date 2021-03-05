@@ -1,0 +1,19 @@
+<ng-content>
+
+</ng-content>
+<div class="row">
+    <div class="col-md-6 my-3" *ngFor="let myName of gridNames">
+        <div class="card">
+            <img class="card-img-top" [src]="myName.imageUrl" alt="" width="200px" height="200px">
+            <div class="card-body">
+                <h4 class="card-title">{{myName.name}}</h4>
+                <p class="card-text">{{myName.description}}</p>
+
+                <div class="text-right">
+                    <button class="btn btn-dark btn-sm ml-1" (click)="destroyName(myName)">Delete</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> 

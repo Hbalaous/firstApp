@@ -11,6 +11,8 @@ import { IntroComponent } from './components/intro/intro.component';
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { NameListComponent } from './components/name-list/name-list.component';
+import { NameGridComponent } from './components/name-grid/name-grid.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LayoutComponent } from './components/layout/layout.component';
     IntroComponent,
     ContentComponent,
     FooterComponent,
-    LayoutComponent
+    LayoutComponent,
+    NameListComponent,
+    NameGridComponent
   ],
   imports: [
     BrowserModule,

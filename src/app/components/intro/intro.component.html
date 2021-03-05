@@ -3,8 +3,18 @@
     <h1 class="display-3">Jumbo heading</h1>
     <p class="lead">Jumbo helper text</p>
     <input type="text" class="form-control" [(ngModel)]="username.name">
-     <button (click)="addName()" class="btn btn-success btn-block">Add new name</button>
+
+    <div *ngIf="editUser; then btnAdd else btnEdit"></div>
+
+    <ng-template #btnAdd>
+        <button (click)="addName()" class="btn btn-success btn-block">Add new name</button>
+    </ng-template>
+
+    <ng-template #btnEdit>
+        <button  class="btn btn-warning btn-block">Edit User</button>
+    </ng-template>
      
+        
      <div *ngIf="editable; then added else noAdded"></div>
      
      <ng-template #added>
@@ -15,9 +25,13 @@
          <span  class="badge badge-info"> new User</span>
      </ng-template>
 
+     <ng-template #edit>
+        <span  class="badge badge-info"> edit User</span>
+    </ng-template>
+
     <hr class="my-2">
 
-    <ul class="list-group">
+   <!-- <ul class="list-group">
         <li class="list-group-item" *ngFor="let myName of names">
             
             <i 
@@ -29,20 +43,41 @@
                 class="fa text-primary">
             </i> 
 
-            <!--<span [class.text-primary]="myName.active">{{ myName.active }}</span>-->
+            <span [class.text-primary]="myName.active">{{ myName.active }}</span>
             
             {{ myName.name }} 
 
             <div class="text-right">
-                <button class="btn btn-dark btn-sm ml-1">Delete</button>
-                <button class="btn btn-warning btn-sm ml-1">Edit</button>
+                <button class="btn btn-dark btn-sm ml-1" (click)="deleteName(myName)">Delete</button>
+                <button class="btn btn-warning btn-sm ml-1" (click)="editName(myName)">Edit</button>
             </div>
 
         </li>
-    </ul>
+    </ul>-->
 
-    <p>More info</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <i class="fa fa-th" aria-hidden="true"  (click)="afficher()"> </i>
+            <i class="fa fa-list ml-3" aria-hidden="true" (click)="afficher()"></i>
+        </div>
+    </div>
+    
+
+    <div *ngIf="card; then grid else list"></div>
+     
+     <ng-template #grid>
+      <app-name-grid (delete)="deleteName($event)" [grid-names]="names">
+        <h1 class="text-danger"> Grid Of Names</h1>
+        <em> sub title of this Chapitre </em>
+      </app-name-grid> 
+     </ng-template>
+
+     <ng-template #list>
+        <app-name-list (delete)="deleteName($event)" [liste-names]="names"> 
+            <h1 class="text-danger"> List Of Names</h1>
+            <em> sub title of this Chapitre </em>
+        </app-name-list>
+     </ng-template>
+
+   
 </div>
